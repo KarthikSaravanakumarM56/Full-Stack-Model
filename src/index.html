@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Shopping Registration</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background-color: lightgray;
+        }
+
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            padding: 25px;
+            background-color: white;
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            margin-top: 15px;
+            padding: 10px 20px;
+        }
+
+        #message {
+            color: green;
+            text-align: center;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>Online Shopping Registration</h2>
+
+    <form>
+
+        <label>Customer Name</label>
+        <input type="text" id="name">
+
+        <label>Email</label>
+        <input type="text" id="email">
+
+        <label>Phone Number</label>
+        <input type="text" id="phone">
+
+        <label>Username</label>
+        <input type="text" id="username">
+
+        <label>Password</label>
+        <input type="password" id="password">
+
+        <label>Address</label>
+        <textarea id="address"></textarea>
+
+        <button type="button" onclick="register()">Register</button>
+        <button type="reset">Reset</button>
+
+    </form>
+
+    <div id="message"></div>
+
+</div>
+
+<script>
+
+function register() {
+
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let phone = document.getElementById("phone").value;
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+    let address = document.getElementById("address").value;
+
+    if (name == "" || email == "" || phone == "" ||
+        username == "" || password == "" || address == "") {
+
+        alert("All fields are required");
+        return;
+    }
+
+    let emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(email)) {
+        alert("Enter a valid email");
+        return;
+    }
+
+    let phonePattern = /^[0-9]{10}$/;
+
+    if (!phonePattern.test(phone)) {
+        alert("Enter a valid 10 digit phone number");
+        return;
+    }
+
+    if (username.length < 4) {
+        alert("Username must contain at least 4 characters");
+        return;
+    }
+
+    if (password.length < 6) {
+        alert("Password must contain at least 6 characters");
+        return;
+    }
+
+    document.getElementById("message").innerHTML =
+        "Registration successful!";
+
+}
+
+</script>
+
+</body>
+</html>
